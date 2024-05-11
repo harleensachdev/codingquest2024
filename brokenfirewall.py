@@ -8,7 +8,7 @@ else:
 totaldestination = 0
 totalsource = 0
 for string in input_data:
-
+    length = 0
     stringdivided = []
     bytesdivided = []
     sourceipaddress =[]
@@ -22,27 +22,23 @@ for string in input_data:
         bytesdivided.append(string[i:i+2])
     length = ''.join(bytesdivided[2:4])
     length = int(length,16)
+
     sipaddress = bytesdivided[12:16]
-    print(sipaddress)
-
-
-
-    for byte in sipaddress:
-        sourceipaddress.append(int(byte,16))
-    if sourceipaddress[0] == 192:
-        totalsource += length
-    elif sourceipaddress[0] == 10:
-        totaldestination += length
-
 
     dipaddress = bytesdivided[16:20]
 
+    for byte in sipaddress:
+        sourceipaddress.append(int(byte,16))
+    if sourceipaddress[0] == 192 and sourceipaddress[1] == 168:
+        totalsource += length
+    if sourceipaddress[0] == 10 and sourceipaddress[1] == 0:
+        totaldestination += length
 
     for byte in dipaddress:
         destinationipaddress.append(int(byte,16))
-    if destinationipaddress[0] == 10:
+    if destinationipaddress[0] == 10 and destinationipaddress[1] == 0:
         totaldestination += length
-    elif destinationipaddress[0] == 192:
+    if destinationipaddress[0] == 192 and destinationipaddress[1] == 168:
         totalsource += length
 
 print(totaldestination)
