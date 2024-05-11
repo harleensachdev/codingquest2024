@@ -44,3 +44,4 @@ for string in input_data:
 print(totaldestination)
 print(totalsource)
 
+# Answer: 258956/256237
