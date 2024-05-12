@@ -48,3 +48,4 @@ image = create_image(encoded_pairs)
 for row in image:
     print(''.join(row))
 
+# Answer: 4951
