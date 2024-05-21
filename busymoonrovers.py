@@ -14,7 +14,7 @@ cleaned_data = []
 for line in data:
     if line.startswith("Rover"):
         route = line.split(": ")[1].split(" -> ")
-        rover_logs.append(route)
+        rover_logs.tappend(route)
     else:
         cleaned_data.append(line)
 
